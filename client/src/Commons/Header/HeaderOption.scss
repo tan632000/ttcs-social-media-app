@@ -1,0 +1,40 @@
+$twitter-color: #50b7f5;
+  $twitter-background: #e6ecf0;
+.headerOption{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: max-content;
+    padding: 16px 12px;
+    &:hover{
+        background-color: rgba(15, 20, 25, 0.1);
+        border-radius: 30px;
+        // color: $twitter-color;
+        transition: color 100ms ease-out;
+    }
+
+    span{
+        font-weight: 400;
+        font-size: 20px;
+        margin-right: 20px;
+        margin-left: 16px;
+        line-height: 24px;
+    }
+}
+
+.headerOption--active{
+    color: $twitter-color;
+}
+
+@media only screen and ( max-width: 1280px ) {
+    .headerOption{
+        span{
+            display: none;
+        }
+    }
+}
+@media only screen and ( max-height: 600px ) {
+    .headerOption{
+        padding: 10px;
+    }
+}

@@ -1,0 +1,15 @@
+@import './Commons/Header/HeaderOption.scss';
+@import './Commons/Header/Header.scss';
+@import './Components/Main/Home.scss';
+@import './Commons/Right/RightMain.scss';
+@import './Components/Profile/Profile.scss';
+
+
+
+.app{
+  .container {
+    display: flex;
+  //   padding-left: 10%;
+  //   padding-right: 6%;
+  }
+}
