@@ -13,14 +13,34 @@ import HeaderOption from './HeaderOption';
 import { Button } from "@material-ui/core";
 import { AccountCircle, AcUnit} from '@material-ui/icons';
 import { useUser } from '../../redux/hooks/User';
+import Popover from '@material-ui/core/Popover';
+
 
 const Header = () => {
     const {user, actionUser} = useUser();
+    
+    // 
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    //   
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
     useEffect(() => {
         actionUser.getUsers();
         console.log('user',user)
     },[])
+    // 
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+       window.location.reload()
+    }
     return (
         <header>
             
@@ -45,19 +65,35 @@ const Header = () => {
             </div>
             <div className="headerUser">
                 <div className="headerUser__aside">
-                    <aside>
+                    <aside onClick={handleClick}>
                         <div className="aside-avatar">
                             <img src="../lisa.jpg"></img>
                         </div>
-                        <div className="aside-name">
-                            <div >
-                                <b>Me</b>
-                                <div><span>#me</span></div>
-                            </div>
-                            
+                        <div className="aside-name" >
+                            <b>Me</b>
+                            <div><span>#me</span></div>
                         </div>
+                        
                     </aside>
-                    
+                    <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                        }}
+                        transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                        }}
+                    >
+                        <div className='icon__logout' onClick={handleLogout}>
+                            <strong>Log out</strong>
+                        </div>
+                        
+                    </Popover>
                 </div>
             </div>
         </header>

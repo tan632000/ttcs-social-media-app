@@ -112,7 +112,10 @@
         .main-content{
 
             .main-content-userName{
-                width: max-content;
+                // width: max-content;
+                display: flex;
+                justify-content: space-between;
+                width: auto;
                 cursor: pointer;
                 line-height: 2;
                 span{
@@ -129,6 +132,15 @@
                     a{
                         text-decoration: underline;
                     }
+                }
+                .icon-morePost{
+                    svg{
+                        &:hover{
+                            border-radius: 50%;
+                            background-color: $bg-hover;
+                        }
+                    }
+                    
                 }
             }
             .main-content-text{

@@ -1,0 +1,104 @@
+.logUp{
+    position: relative;
+    .log{
+        // position: relative;
+        height: 100vh;
+        width: 100%;
+        .log-main{
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+            height: 90vh;
+            .log-img{
+                width: 50%;
+                position: relative;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    filter: brightness(70%) !important;
+                }
+                svg{
+                    position: absolute;
+                    z-index: 1;
+                    top: 25%;
+                    left: 0;
+                    width: 100%;
+                    height: 50%;
+                    color: snow;
+                }
+            }
+            .log-form{
+                width: 50%;
+                padding: 80px 36px 0;
+                box-sizing: border-box;
+                .log__svg{
+                    font-size: 50px;
+                    
+                }
+                .sp-h1{
+                    display: block;
+                    font-size: 64px;
+                    font-weight: 700;
+                    padding: 50px 0;
+                }
+                .log-form-change{
+                    .sp-h2{
+                        font-size: 30px;
+                        font-weight: 700;
+                    }
+                    .log-form__bt{
+                        padding-top: 20px;
+                        div{
+                            width: 300px;
+                            display: flex;
+                            justify-content: center;
+                            padding: 8px 0;
+                            border: 1px solid grey;
+                            margin-top:10px;
+                            border-radius: 20px;
+                            span{
+                                font-weight: 600;
+                            }
+                            &:hover{
+                                background-color: $bg-hover;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    strong{
+                        &:hover{
+                            color: $twitter-color;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+        .log-footer{
+            width: 50%;
+        }
+    }
+    .log-up{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        padding: 10% 30%;
+        z-index: 9;
+        box-sizing: border-box;
+        .log-up-form{
+            border: 1px solid black;
+            border-radius: 50px;
+            background-color: white;
+            height: 100%;
+            padding: 10px 30px;
+            box-sizing: border-box;
+            .logUp__cancel{
+                &:hover{
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
