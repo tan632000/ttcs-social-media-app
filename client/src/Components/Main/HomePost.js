@@ -1,6 +1,8 @@
 import React from 'react';
-import { ChatBubble, Share, ThumbUp} from '@material-ui/icons';
+import { ChatBubble, Delete, MoreHoriz, Share, ThumbUp} from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import Popover from '@material-ui/core/Popover';
+
 const CommentOption = ({text, Icon}) => {
     return (
         <div>
@@ -10,6 +12,18 @@ const CommentOption = ({text, Icon}) => {
     );
 };
 const HomePost = () => {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
     return (
         <div className="main-form">
             <div className="main__avatar">
@@ -17,8 +31,34 @@ const HomePost = () => {
             </div>
             <div className="main-content">
                 <div className="main-content-userName">
-                    <span className="fw-text"><Link to=""> Bill Gates</Link></span>
-                    <span>@BillGates</span>
+                    <div>
+                        <span className="fw-text"><Link to=""> Bill Gates</Link></span>
+                        <span>@BillGates</span>
+                    </div>
+                    <div className='icon-morePost'>
+                        <MoreHoriz onClick={handleClick} />
+                        
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
+                            }}
+                        >
+                            <div className='icon__deletePost'>
+                                <span>Delete</span>
+                                <span><Delete /></span>
+                            </div>
+                            {/* <Typography >The content of the Popover.</Typography> */}
+                        </Popover>
+                    </div>
                 </div>
                 <div className="main-content-text">
                     <span>We’ll post more updates as we move towards completion. Don’t hesitate to send pull requests 
