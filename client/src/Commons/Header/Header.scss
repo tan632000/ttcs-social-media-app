@@ -59,6 +59,7 @@ header{
       justify-content: space-between;
       aside{
           display: flex;
+          width: 100%;
           .aside-avatar{
               margin-right: 12px;
               img{
@@ -76,6 +77,11 @@ header{
                       text-decoration: underline;
                   }
               }
+              
+          }
+          &:hover{
+            background: $bg-hover;
+            border-radius: 20px;
           }
       }
     }
