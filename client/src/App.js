@@ -2,13 +2,13 @@ import "./App.scss";
 import Header from "./Commons/Header/Header";
 import { BrowserRouter as Router, Navigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Components/Main/Home";
+import Home from "./Pages/Main/Home";
 import RightMain from "./Commons/Right/RightMain";
-import Profile from "./Components/Profile/Profile";
-import Register from "./Components/Register/index";
+import Profile from "./Pages/Profile/Profile";
+import Register from "./Pages/Register/index";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
-import Login from "./Components/Login";
+import Login from "./Pages/Login";
 
 
 const Element = ({ Elem }) => {
