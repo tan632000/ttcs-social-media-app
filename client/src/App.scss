@@ -1,10 +1,10 @@
 @import './Commons/Header/HeaderOption.scss';
 @import './Commons/Header/Header.scss';
-@import './Components/Main/Home.scss';
+@import './Pages/Main/Home.scss';
 @import './Commons/Right/RightMain.scss';
-@import './Components/Profile/Profile.scss';
-@import './Components/Login/Log.scss';
-@import './Components/TodoList/TodoList.scss';
+@import './Pages/Profile/Profile.scss';
+@import './Pages/Login/Log.scss';
+@import './Pages/TodoList/TodoList.scss';
 
 
 .app{
@@ -30,4 +30,7 @@
   color: rgb(228, 141, 27);
   justify-content: center;
   align-items: center;
+  &:hover{
+    cursor: pointer;
+  }
 }

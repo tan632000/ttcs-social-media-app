@@ -1,0 +1,53 @@
+.todo-top{
+    text-align: center;
+    color: rgb(3, 94, 94);
+}
+.todo-main{
+    display: flex;
+    padding: 0 5%;
+    text-align: center;
+    height: 40px;
+    input{
+        width: 85%;
+        font-size: 22px;
+        padding: 5px 0;
+        text-align: center;
+        height: auto;
+        border-radius: 10px;
+        border: 1px solid black;
+    }
+    svg{
+        width: 15%;
+        height: auto;
+        background-color: teal;
+        border-radius: 10px;
+        &:hover{
+            background-color: tan;
+            cursor: pointer;
+        }
+    }
+}
+ul{
+    margin: unset;
+    padding: 5px 5%;
+    li{
+        background-color: $twitter-background;
+        list-style: none;
+        display: flex;
+        font-size: 25px;
+        padding: 1px 5px ;
+        margin-top: 5px;
+        justify-content: space-between;
+        svg{
+            height: auto !important;
+            
+            &:hover{
+                cursor: pointer;
+                transform: rotate(180deg);
+                transition: 2s;
+                color: #8b0000;
+            }
+        }
+
+    }
+}
