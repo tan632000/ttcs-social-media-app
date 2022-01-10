@@ -37,7 +37,7 @@ const AuthReducer = (state, action) => {
         },
       };
     case "UPDATE_USER_SUCCESS": {
-      console.log("aaa", action.payload);
+      // console.log("aaa", action.payload);
       return {
         ...state,
         user: action.payload,
