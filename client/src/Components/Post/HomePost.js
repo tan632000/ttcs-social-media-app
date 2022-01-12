@@ -17,6 +17,7 @@ const CommentOption = ({text, Icon}) => {
 };
 const HomePost = ({post}) => {
 
+    console.log('post', post)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -26,7 +27,7 @@ const HomePost = ({post}) => {
     };
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-//   
+    //   
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
     const [user, setUser] = useState({});
@@ -41,10 +42,11 @@ const HomePost = ({post}) => {
     const fetchUser = async () => {
         const res = await axios.get(`/users?userId=${post.userId}`);
         setUser(res.data);
+        console.log(res);
     };
     fetchUser();
     }, [post.userId]);
-// 
+    // 
     const likeHandler = () => {
     try {
         axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
@@ -53,20 +55,29 @@ const HomePost = ({post}) => {
     setIsLiked(!isLiked);
     };
     // 
-    // console.log(post);
+
+    const handleDelete = async() => {
+        console.log("absolue",post);
+        try{
+            await axios.delete(`/posts/${post._id}`, post)
+        } catch(err){
+            console.log(err)
+        }
+    }
+    // console.log(currentUser);
     return (
         <div className="main-form">
             <div className="main__avatar">
                 <Link to={`/profile/${user.username}`} >
-                    <img src={user.profilePicture ? PF + user.profilePicture : "../lisa.jpg"} 
+                    <img src={currentUser.profilePicture ? PF + currentUser.profilePicture : "../lisa.jpg"} 
                     />
                 </Link>
             </div>
             <div className="main-content">
                 <div className="main-content-userName">
                     <div>
-                        <span className="fw-text"><Link to={`/profile/${user.username}`}> {user.username}</Link></span>
-                        <span>@{user.username}</span>
+                        <span className="fw-text"><Link to={`/profile/${currentUser.username}`}> {currentUser.username}</Link></span>
+                        <span>@{currentUser.username}</span>
                         <span className="fw-date">{format(post.createdAt)}</span>
                     </div>
                     <div className='icon-morePost'>
@@ -88,7 +99,7 @@ const HomePost = ({post}) => {
                         >
                             <div className='icon__deletePost'>
                                 <span>Delete</span>
-                                <span><Delete /></span>
+                                <span onClick={handleDelete}><Delete /></span>
                             </div>
                             {/* <Typography >The content of the Popover.</Typography> */}
                         </Popover>
