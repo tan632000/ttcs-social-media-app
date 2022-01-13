@@ -9,6 +9,7 @@ import Register from "./Pages/Register/index";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Login from "./Pages/Login";
+import PrivateRoute from "./Commons/PrivateRoute/PrivateRoute";
 
 
 const Element = ({ Elem }) => {
@@ -24,6 +25,8 @@ const Element = ({ Elem }) => {
 };
 function App() {
   const { user } = useContext(AuthContext);
+  
+
   return (
     <Router>
       <Routes>
@@ -33,7 +36,7 @@ function App() {
           element={user ? <Navigate to="/" /> : <Login />}
         ></Route>
         <Route path="/home" element={<Element Elem={Home} />}></Route>
-        <Route path="/profile" element={<Element Elem={Profile} />}></Route>
+        <Route path={`/profile`} element={<Element Elem={Profile} />}></Route>
       </Routes>
     </Router>
   );

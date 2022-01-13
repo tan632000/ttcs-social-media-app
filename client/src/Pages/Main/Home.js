@@ -25,7 +25,6 @@ const Home = ({username}) => {
     fetchPosts();
   },[username, user._id]);
   console.log(user);
-  // console.log('aaaa',posts)
   return (
     <div className="main">
       <div className="main-top">

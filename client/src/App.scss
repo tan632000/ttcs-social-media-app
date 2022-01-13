@@ -20,6 +20,14 @@
   align-items: center;
   span{
     margin-left:10px ;
+    svg{
+      &:hover{
+        transform: rotate(180deg);
+        transition-duration: 2s;
+        color: brown;
+        cursor: pointer;
+      }
+    }
   }
 }
 .icon__logout{

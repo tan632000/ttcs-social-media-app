@@ -1,8 +1,16 @@
 import { Search } from '@material-ui/icons';
-import React from 'react';
+import axios from 'axios';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../../context/AuthContext";
 
 const Aside = ({src,userName,hideName}) => {
+    const {user} = useContext(AuthContext);
+    try {
+        axios.get(`/users`).then(res => console.log(res.data))
+    } catch (error) {
+        
+    }
     return(
         <div className="aside">
             <aside>

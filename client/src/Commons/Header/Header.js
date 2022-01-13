@@ -14,11 +14,11 @@ import { Button } from "@material-ui/core";
 import { AccountCircle, AcUnit} from '@material-ui/icons';
 import { useUser } from '../../redux/hooks/User';
 import Popover from '@material-ui/core/Popover';
-
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     const {user, actionUser} = useUser();
-    
+    const navigate = useNavigate();
     // 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -39,7 +39,12 @@ const Header = () => {
     // 
     const handleLogout = () => {
         localStorage.removeItem('user');
-       window.location.reload()
+        try {
+            navigate("/login");
+            window.location.reload()
+        } catch (error) {
+            
+        }
     }
     return (
         <header>
@@ -48,13 +53,13 @@ const Header = () => {
                 <section>
                     <TwitterIcon className="header__twitterIcon" />
 
-                    <div className="header--home"><HeaderOption active Icon={HomeIcon} text="Home" /></div>
-                    <HeaderOption Icon={SearchIcon} text="Explore" />
+                    <Link to="/"><HeaderOption active Icon={HomeIcon} text="Home" /></Link>
+                    <Link to=""><HeaderOption Icon={SearchIcon} text="Explore" /></Link>
                     <HeaderOption Icon={NotificationsNoneIcon} text="Notifications" />
                     <HeaderOption Icon={MailOutlineIcon} text="Messages" />
                     <HeaderOption Icon={BookmarkBorderIcon} text="Bookmarks" />
                     <HeaderOption Icon={ListAltIcon} text="Lists" />
-                    <HeaderOption Icon={PermIdentityIcon} text="Profile" />
+                    <Link to="/profile"><HeaderOption Icon={PermIdentityIcon} text="Profile" /></Link>
                     <HeaderOption Icon={MoreHorizIcon} text="More" />
                     <div  className="header--iconScreen"><HeaderOption Icon={AcUnit} text="" /></div>
                     <Button variant="outlined" className="header-button">
